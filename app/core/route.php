@@ -34,7 +34,7 @@ class Route
         $controller_name = 'Controller_'.$controller_name;
         $action_name = 'action_'.$action_name;
 
-        // подцепляем файл с классом модели (файла модели может и не быть)
+        // подцепляем файл с классом модели
 
         $model_file = strtolower($model_name).'.php';
         $model_path = "app/models/".$model_file;
@@ -53,7 +53,7 @@ class Route
         else
         {
 
-            //Route::ErrorPage404();
+            Route::ErrorPage404();
         }
 
         // создаем контроллер
@@ -70,8 +70,7 @@ class Route
         }
         else
         {
-            // здесь также разумнее было бы кинуть исключение
-//            Route::ErrorPage404();
+            Route::ErrorPage404();
         }
 
     }

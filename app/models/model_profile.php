@@ -8,12 +8,14 @@ class Model_Profile extends model
         $stmt->bindParam(':num', $_COOKIE["id"], PDO::PARAM_INT);
         $stmt->execute();
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
-        $role = $data["isAdmin"];
-        if($role==1){
-            $data["isAdmin"]="Администратор";
-        }
-        else {
-            $data["isAdmin"]="Гость";
+        if ($data!=false){
+            $role = $data["isAdmin"];
+            if($role==1){
+                $data["isAdmin"]="Администратор";
+            }
+            else {
+                $data["isAdmin"]="Гость";
+            }
         }
         return $data;
     }

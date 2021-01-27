@@ -20,6 +20,13 @@ class Controller_Profile extends Controller
         else{
             $data =$this->model->get_data();
         }
-        $this->view->generate($content, 'template_view.php',$data);
+
+        if ($data!=false){
+            $this->view->generate($content, 'template_view.php',$data);
+        }
+        else{
+            header("Location: /error");
+            exit();
+        }
     }
 }

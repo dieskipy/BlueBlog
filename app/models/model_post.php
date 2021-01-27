@@ -25,17 +25,22 @@ class Model_Post extends model
     }
     public function update_views($param)
     {
+        $result = false;
         $pdo=parent::get_data();
         $stmt = $pdo->prepare('SELECT views FROM `news` WHERE num=:num');
         $stmt->bindParam(':num', $param, PDO::PARAM_INT);
         $stmt->execute();
         $data = $stmt->fetch(PDO::FETCH_LAZY);
         $views = $data["views"];
+        if($data!=false){
+            $result = true;
+        }
         ++$views;
         $stmt = $pdo->prepare('UPDATE `news` SET views=:views WHERE num=:num');
         $stmt->bindParam(':views', $views, PDO::PARAM_INT);
         $stmt->bindParam(':num', $param, PDO::PARAM_INT);
         $stmt->execute();
+        return $result;
     }
     public function update_post($param)
     {

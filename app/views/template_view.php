@@ -14,7 +14,6 @@
         <script src="js/jquery-3.5.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src = "js/main.js"></script>
         <link rel="stylesheet" href="css/style.css">
 
         <link rel="shortcut icon" type="image/x-icon" href="img/ico.ico" />
@@ -54,6 +53,7 @@
         </header>
 
         <?php include 'app/views/'.$content_view["body"]; ?>
+        <script src = "js/main.js"></script>
 
     </body>
 </html>

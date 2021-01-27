@@ -21,7 +21,14 @@ class Controller_Post extends Controller
             if(!$result["isAdmin"])
                 $this->model->update_views($post);
         }
-        $this->view->generate($content, 'template_view.php',$data, $result["isAdmin"]);
+        if ($data!=false){
+            $this->view->generate($content, 'template_view.php',$data, $result["isAdmin"]);
+        }
+        else{
+            header("Location: /error");
+            exit();
+        }
+
     }
     function action_edit_post($post)
     {
@@ -36,8 +43,15 @@ class Controller_Post extends Controller
         else{
             $data =$this->model->get_param_data($post);
         }
-        $this->view->generate($content, 'template_view.php',$data);
+        if ($data!=false){
+            $this->view->generate($content, 'template_view.php',$data);
+        }
+        else{
+            header("Location: /error");
+            exit();
+        }
     }
+
     function action_update_post($post)
     {
         $result = parent::action_index();

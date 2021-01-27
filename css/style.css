@@ -1,0 +1,100 @@
+body{
+    min-width: 320px;
+    font-size: 14pt;
+    font-family: 'Fira Sans', sans-serif;
+    color: #333333;
+    background-color: white;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+a{
+    color:#0b0c11;
+    font-size: 10pt;
+}
+a:hover{
+    color: #1446a3;
+}
+
+
+header .navbar-brand{
+    font-size:15pt;
+    font-family: 'Playfair Display', serif;
+    
+}
+
+header .nav-link {
+    font-size:12pt;
+    font-family: 'Playfair Display', serif; 
+    margin-left: 40px;
+    color:#0b0c11;
+}
+header .dropdown-item{
+    font-size:12pt;
+    font-family: 'Playfair Display', serif; 
+    color:#00000080;
+}
+.slider {
+    margin-bottom: 50px;
+}
+
+.post-lil-title{
+    font-size: 20pt;
+    font-family: 'Playfair Display', serif;
+    font-weight: normal;
+    color: #1446a3;
+ 
+}
+.post-title{
+    font-size: 26pt;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    color: #0b0c11;
+}
+
+p{
+    font-size: 12pt;
+    color: #8f8f8f;
+    margin: auto;
+    
+}
+.grid-posts{
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+.grid-posts .card{
+    margin-bottom: 100px;
+    min-height: 500px;
+}
+.card-img-top{
+    max-height: 400px;
+    width: auto;
+}
+.div-inline{
+    display: inline;
+}
+.nomargin{
+    margin: 0 0 0 0;
+}
+.ad{
+    width: 100%;
+    background-position: center center;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+    margin-bottom: 30pt;
+}
+.ad_img
+{
+    height: 40%;
+    margin-right: 20pt;
+    margin-left: 20pt;
+}
+
+.ad_info
+{
+    height: auto;
+    max-width: 40%;
+    background-position: center;
+}

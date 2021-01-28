@@ -1,4 +1,5 @@
 <?php
+
 class Controller_Post extends Controller
 {
     function __construct()
@@ -6,47 +7,45 @@ class Controller_Post extends Controller
         $this->model = new Model_Post();
         $this->view = new View();
     }
+
     function action_get_post($post)
     {
         $result = parent::action_index();
         $content = array(
             "nav" => $this->nav,
             "body" => 'post_view.php');
-        if (!$result["isAuth"]){
-            $content["body"]='error_log_view.php';
-            $data=$this->model->get_error();
-        }
-        else{
-            $data =$this->model->get_param_data($post);
-            if(!$result["isAdmin"])
+        if (!$result["isAuth"]) {
+            $content["body"] = 'error_log_view.php';
+            $data = $this->model->get_error();
+        } else {
+            $data = $this->model->get_param_data($post);
+            if (!$result["isAdmin"])
                 $this->model->update_views($post);
         }
-        if ($data!=false){
-            $this->view->generate($content, 'template_view.php',$data, $result["isAdmin"]);
-        }
-        else{
+        if ($data != false) {
+            $this->view->generate($content, 'template_view.php', $data, $result["isAdmin"]);
+        } else {
             header("Location: /error");
             exit();
         }
 
     }
+
     function action_edit_post($post)
     {
         $result = parent::action_index();
         $content = array(
             "nav" => $this->nav,
             "body" => 'post_edit_view.php');
-        if (!$result["isAdmin"]){
-            $content["body"]='error_log_view.php';
-            $data=$this->model->get_error();
+        if (!$result["isAdmin"]) {
+            $content["body"] = 'error_log_view.php';
+            $data = $this->model->get_error();
+        } else {
+            $data = $this->model->get_param_data($post);
         }
-        else{
-            $data =$this->model->get_param_data($post);
-        }
-        if ($data!=false){
-            $this->view->generate($content, 'template_view.php',$data);
-        }
-        else{
+        if ($data != false) {
+            $this->view->generate($content, 'template_view.php', $data);
+        } else {
             header("Location: /error");
             exit();
         }
@@ -56,20 +55,18 @@ class Controller_Post extends Controller
     {
         $result = parent::action_index();
 
-        if (!$result["isAdmin"]){
+        if (!$result["isAdmin"]) {
             $content = array(
                 "nav" => $this->nav,
                 "body" => 'error_log_view.php');
-            $data=$this->model->get_error();
-            $this->view->generate($content, 'template_view.php',$data);
-        }
-        else{
-            $data=$this->model->update_post($post);
-            if ($data!=false){
-                header('Location: /post?'.$post.'/get_post');
+            $data = $this->model->get_error();
+            $this->view->generate($content, 'template_view.php', $data);
+        } else {
+            $data = $this->model->update_post($post);
+            if ($data != false) {
+                header('Location: /post?' . $post . '/get_post');
                 exit();
-            }
-            else{
+            } else {
                 header("Location: /error");
                 exit();
             }

@@ -1,5 +1,7 @@
 <?php
-class Controller {
+
+class Controller
+{
 
     public $model;
     public $view;
@@ -16,15 +18,14 @@ class Controller {
     {
         $this->nav = $this->default_nav;
         $results = array(
-            "isAuth"=>false,
-            "isAdmin"=>false
+            "isAuth" => false,
+            "isAdmin" => false
         );
         //check auth
-        if (isset($_COOKIE["id"]))
-        {
+        if (isset($_COOKIE["id"])) {
 
-            $results["isAuth"]=true;
-            $results["isAdmin"]=(boolean)$_COOKIE["isAdmin"];
+            $results["isAuth"] = true;
+            $results["isAdmin"] = (boolean)$_COOKIE["isAdmin"];
         }
 
         if ($results["isAuth"])

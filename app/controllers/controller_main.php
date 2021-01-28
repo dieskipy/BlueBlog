@@ -1,4 +1,5 @@
 <?php
+
 class Controller_Main extends Controller
 {
     function __construct()
@@ -6,6 +7,7 @@ class Controller_Main extends Controller
         $this->model = new Model_Main();
         $this->view = new View();
     }
+
     function action_index()
     {
         $result = parent::action_index();
@@ -13,7 +15,7 @@ class Controller_Main extends Controller
             "nav" => $this->nav,
             "body" => 'main_view.php');
 
-        $data =$this->model->get_data();
+        $data = $this->model->get_data();
 
         $this->view->generate($content, 'template_view.php', $data);
     }

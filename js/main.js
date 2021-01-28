@@ -12,8 +12,8 @@ window.onload = function () {
                 let parent = document.querySelector('#mygrid');
                 for (let i = 0; i < parent.children.length; i++) {
                     for (let j = i; j < parent.children.length; j++) {
-                        let ni = parent.children[i].getAttribute('data-views');
-                        let nj = parent.children[j].getAttribute('data-views');
+                        let ni = parseInt(parent.children[i].getAttribute('data-views'), 10);
+                        let nj = parseInt(parent.children[j].getAttribute('data-views'), 10);
                         if (ni < nj) {
                             let replaceNode = parent.replaceChild(parent.children[j], parent.children[i]);
                             InsertAfter(replaceNode, parent.children[i]);
@@ -26,8 +26,8 @@ window.onload = function () {
                 let parent = document.querySelector('#mygrid');
                 for (let i = 0; i < parent.children.length; i++) {
                     for (let j = i; j < parent.children.length; j++) {
-                        let ni = parent.children[i].getAttribute('data-views');
-                        let nj = parent.children[j].getAttribute('data-views');
+                        let ni = parseInt(parent.children[i].getAttribute('data-views'), 10);
+                        let nj = parseInt(parent.children[j].getAttribute('data-views'), 10);
                         if (ni > nj) {
                             let replaceNode = parent.replaceChild(parent.children[j], parent.children[i]);
                             InsertAfter(replaceNode, parent.children[i]);
@@ -40,8 +40,8 @@ window.onload = function () {
             let parent = document.querySelector('#mygrid');
             for (let i = 0; i < parent.children.length; i++) {
                 for (let j = i; j < parent.children.length; j++) {
-                    let ni = parent.children[i].getAttribute('data-date');
-                    let nj = parent.children[j].getAttribute('data-date');
+                    let ni = Date.parse(parent.children[i].getAttribute('data-date'));
+                    let nj = Date.parse(parent.children[j].getAttribute('data-date'));
                     if (ni < nj) {
                         let replaceNode = parent.replaceChild(parent.children[j], parent.children[i]);
                         InsertAfter(replaceNode, parent.children[i]);

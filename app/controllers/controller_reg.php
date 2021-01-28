@@ -8,17 +8,32 @@ class Controller_Reg extends Controller
     }
     function action_index()
     {
-        $result = parent::action_index();
-        $content = array(
-            "nav" => $this->nav,
-            "body" => 'reg_view.php');
-        $data = $this->model->get_data();
-        $this->view->generate($content, 'template_view.php',$data);
+        if (empty($_COOKIE["id"])){
+            $result = parent::action_index();
+            $content = array(
+                "nav" => $this->nav,
+                "body" => 'reg_view.php');
+            $data = $this->model->get_data();
+            $this->view->generate($content, 'template_view.php',$data);
+        }
+        else
+        {
+            header("Location: /error");
+            exit();
+        }
     }
     function action_validate()
     {
-        $result = $this->model->validate();
-        header($result);
-        exit();
+        if (empty($_COOKIE["id"])){
+            $result = $this->model->validate();
+            header($result);
+            exit();
+        }
+        else
+        {
+            header("Location: /error");
+            exit();
+        }
+
     }
 }

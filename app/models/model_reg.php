@@ -29,7 +29,7 @@ class Model_Reg extends model
         $result='Location: /reg';
         if ($data!=false)
         {
-            setcookie("goodReg",false,time()+60,'/');
+            setcookie("goodReg","false",time()+60,'/');
         }
         else{
             $password = $_POST["password"];
@@ -46,7 +46,7 @@ class Model_Reg extends model
 
             setcookie("id",$data["num"],time()+60*60*24*30,'/');
             setcookie("isAdmin",0,time()+60*60*24*30,'/');
-            setcookie("goodAuth",true,time()+60,'/');
+            setcookie("goodAuth","true",time()+60,'/');
             $result='Location: /';
         }
         return $result;

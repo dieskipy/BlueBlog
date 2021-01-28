@@ -32,16 +32,16 @@ class Model_Auth extends model
             {
                 setcookie("id",$data["num"],time()+60*60*24*30,'/');
                 setcookie("isAdmin",$data["isAdmin"],time()+60*60*24*30,'/');
-                setcookie("goodAuth",true,time()+60,'/');
+                setcookie("goodAuth","true",time()+60*2,'/');
                 $result='Location: /';
             }
             else{
-                setcookie("goodAuth",false,time()+60,'/');
+                setcookie("goodAuth","false",time()+60*2,'/');
             }
 
         }
         else{
-            setcookie("goodAuth",false,time()+60,'/');
+            setcookie("goodAuth","false",time()+60*2,'/');
         }
         return $result;
     }

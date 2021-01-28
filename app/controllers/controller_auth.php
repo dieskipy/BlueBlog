@@ -8,26 +8,50 @@ class Controller_Auth extends Controller
     }
     function action_index()
     {
-        parent::action_index();
-        $data = $this->model->get_data();
+        if (empty($_COOKIE["id"])){
+            parent::action_index();
+            $data = $this->model->get_data();
 
-        $content = array(
-            "nav" => $this->nav,
-            "body" => 'auth_view.php');
+            $content = array(
+                "nav" => $this->nav,
+                "body" => 'auth_view.php');
 
-        $this->view->generate($content, 'template_view.php',$data);
+            $this->view->generate($content, 'template_view.php',$data);
+        }
+        else
+        {
+            header("Location: /error");
+            exit();
+        }
+
     }
     function action_login()
     {
-        $result = $this->model->login();
-        header($result);
-        exit();
+        if (empty($_COOKIE["id"])){
+            $result = $this->model->login();
+            header($result);
+            exit();
+        }
+        else
+        {
+            header("Location: /error");
+            exit();
+        }
+
     }
     function action_logout()
     {
-        setcookie("id","",0,'/');
-        setcookie("isAdmin","",0,'/');
-        header("Location: /");
-        exit();
+        if (empty($_COOKIE["id"])){
+            header("Location: /error");
+            exit();
+        }
+        else
+        {
+            setcookie("id","",0,'/');
+            setcookie("isAdmin","",0,'/');
+            header("Location: /");
+            exit();
+        }
+
     }
 }

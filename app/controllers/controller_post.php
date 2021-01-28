@@ -64,9 +64,16 @@ class Controller_Post extends Controller
             $this->view->generate($content, 'template_view.php',$data);
         }
         else{
-            $this->model->update_post($post);
-            header('Location: /post?'.$post.'/get_post');
-            exit();
+            $data=$this->model->update_post($post);
+            if ($data!=false){
+                header('Location: /post?'.$post.'/get_post');
+                exit();
+            }
+            else{
+                header("Location: /error");
+                exit();
+            }
+
         }
 
     }
